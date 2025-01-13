@@ -28,26 +28,26 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang='en'>
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
-      <ClerkLoading>
-          <Loader/>
-      </ClerkLoading>
-      <ClerkLoaded>
-      <div className='flex justify-between max-w-6xl mx-auto'>
-        <div className='hidden sm:inline border-r h-screen sticky top-0'>
-          <LeftSideBar />
-        </div>
-        <div className='w-2xl flex-1'>{children}</div>
-        <div className='lg:flex-col p-3 h-screen border-l hidden lg:flex w-[24rem]'>
-          <RightSideBar />
-        </div>
-      </div>
-      </ClerkLoaded>
-    </body>
-  </html>
-  </ClerkProvider>
+      <html lang='en'>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ClerkLoading>
+            <Loader />
+          </ClerkLoading>
+          <ClerkLoaded>
+            <div className='flex justify-between max-w-6xl mx-auto'>
+              <div className='hidden sm:inline border-r h-screen sticky top-0'>
+                <LeftSideBar />
+              </div>
+              <div className='w-2xl flex-1'>{children}</div>
+              <div className='lg:flex-col p-3 h-screen border-l hidden lg:flex w-[24rem]'>
+                <RightSideBar />
+              </div>
+            </div>
+          </ClerkLoaded>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

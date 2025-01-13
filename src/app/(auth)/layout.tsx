@@ -14,16 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang='en'>
         <body>
           <ClerkLoading>
             <Loader />
           </ClerkLoading>
-          <ClerkLoaded>
-            <html lang="en">
-              <body>{children}</body>
-            </html>
-          </ClerkLoaded>
+          <ClerkLoaded>{children}</ClerkLoaded>
         </body>
       </html>
     </ClerkProvider>

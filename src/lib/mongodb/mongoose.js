@@ -8,7 +8,6 @@ export const connect = async () => {
     console.log('Already connected to MongoDB');
     return;
   }
-
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'next-social-app',
