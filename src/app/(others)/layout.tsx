@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import LeftSideBar from "@/components/LeftSideBar";
 import RightSideBar from "@/components/RightSideBar";
+import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import Loader from "@/components/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang='en'>
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
+      <ClerkLoading>
+          <Loader/>
+      </ClerkLoading>
+      <ClerkLoaded>
       <div className='flex justify-between max-w-6xl mx-auto'>
         <div className='hidden sm:inline border-r h-screen sticky top-0'>
           <LeftSideBar />
@@ -38,7 +45,9 @@ export default function RootLayout({
           <RightSideBar />
         </div>
       </div>
+      </ClerkLoaded>
     </body>
   </html>
+  </ClerkProvider>
   );
 }
