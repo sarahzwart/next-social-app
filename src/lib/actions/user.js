@@ -2,24 +2,13 @@ import User from '../models/user.model';
 
 import { connect } from '../mongodb/mongoose';
 
-type email_addresses = {
-    email_address: string;
-    id: string;
-    linked_to: [];
-    object: string;
-    verification: {
-        status: string;
-        strategy: string;
-    }
-};
-  
 export const createOrUpdateUser = async (
-  id:string,
-  first_name:string,
-  last_name:string,
-  image_url:string,
-  email_addresses:email_addresses[],
-  username:string
+  id,
+  first_name,
+  last_name,
+  image_url,
+  email_addresses,
+  username
 ) => {
   try {
     await connect();
@@ -42,7 +31,7 @@ export const createOrUpdateUser = async (
   }
 };
 
-export const deleteUser = async (id:string) => {
+export const deleteUser = async (id) => {
   try {
     await connect();
     await User.findOneAndDelete({ clerkId: id });

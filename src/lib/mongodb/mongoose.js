@@ -9,14 +9,11 @@ export const connect = async () => {
     return;
   }
 
-  const mongoUri = process.env.MONGODB_URI;
-  if (!mongoUri) {
-    throw new Error('MONGODB_URI is not defined in environment variables');
-  }
-
   try {
-    await mongoose.connect(mongoUri, {
+    await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'next-social-app',
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
     initialized = true;
