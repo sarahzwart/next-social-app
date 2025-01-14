@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  "rules": {
-  "@typescript-eslint/no-unused-vars": "warn",
-  "next/no-img-element": "warn",
-  "jsx-a11y/alt-text": "warn"
-}
-
+  eslint: {
+    dirs: ['src'], // Paths to scan for linting
+  },
 };
 
 export default nextConfig;
