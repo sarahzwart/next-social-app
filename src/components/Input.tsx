@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { HiOutlinePhotograph } from "react-icons/hi";
 import { UploadButton } from "@/utils/uploadthing";
 import { AiOutlineDelete } from "react-icons/ai";
 
