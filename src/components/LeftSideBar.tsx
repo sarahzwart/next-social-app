@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FaCat } from "react-icons/fa";
 import { HiHome } from 'react-icons/hi';
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from '@clerk/nextjs';
+import MiniProfile from './MiniProfile';
 export default function LeftSideBar() {
     return (
         <div className='flex flex-col p-3 justify-between h-screen items-center'>
@@ -25,6 +26,9 @@ export default function LeftSideBar() {
               </SignedOut>
             </button>
           </div>
+          <SignedIn>
+            <MiniProfile/>
+          </SignedIn>
         </div>
     )
 }
