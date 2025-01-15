@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/webhooks/route.ts", "src/lib/actions/user.js", "src/lib/models/user.model.js", "src/lib/mongodb/mongoose.js", "src/components/Icons.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/webhooks/route.ts", "src/lib/actions/user.js", "src/lib/models/user.model.js", "src/lib/mongodb/mongoose.js", "src/components/Icons.tsx", "src/app/api/post/like/route.js"],
   "exclude": ["node_modules"]
 }

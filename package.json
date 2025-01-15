@@ -11,6 +11,8 @@
   "dependencies": {
     "@clerk/nextjs": "^6.9.10",
     "@supabase/supabase-js": "github:supabase/supabase-js",
+    "@tensorflow-models/mobilenet": "^2.1.1",
+    "@tensorflow/tfjs": "^4.22.0",
     "@uploadthing/react": "^7.1.5",
     "firebase": "^11.1.0",
     "googleapis": "^144.0.0",
