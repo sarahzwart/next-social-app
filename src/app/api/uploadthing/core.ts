@@ -3,7 +3,7 @@ import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
-const auth = (req: Request) => ({ id: "fakeId" }); // Fake auth function
+const auth = () => ({ id: "fakeId" }); // Fake auth function
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
@@ -19,11 +19,9 @@ export const ourFileRouter = {
     },
   })
     .middleware(async ({ req }) => {
-      const user = await auth(req);
-        console.log(req)
+      const user = await auth();
       // If you throw, the user will not be able to upload
       if (!user) throw new UploadThingError("Unauthorized");
-
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.id };
     })

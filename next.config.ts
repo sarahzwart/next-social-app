@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    dirs: ['src'], // Paths to scan for linting
-  },
+  /* config options here */
 };
 
 export default nextConfig;
