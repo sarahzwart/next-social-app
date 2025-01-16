@@ -5,6 +5,7 @@ import LeftSideBar from "@/components/LeftSideBar";
 import RightSideBar from "@/components/RightSideBar";
 import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import Loader from "@/components/Loader";
+import CommentsPopup from "@/components/CommentsPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,6 +46,7 @@ export default function RootLayout({
                 <RightSideBar />
               </div>
             </div>
+            <CommentsPopup/>
           </ClerkLoaded>
         </body>
       </html>
