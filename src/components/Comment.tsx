@@ -8,7 +8,7 @@ import {
 import { useUser } from "@clerk/nextjs";
 
 
-/*interface CommentInterface {
+interface CommentInterface {
   comment: string;
   user: string;
   name: string;
@@ -16,12 +16,25 @@ import { useUser } from "@clerk/nextjs";
   profileImg: string;
   _id: string;
   createdAt: string;
-}*/
+}
 
-export default function Comment({ comment, key, post} /*: {comment: CommentInterface, key: string}*/) {
-  console.log(post)
+interface PostInterface {
+  comments: string[];
+  createdAt: string;
+  image: string;
+  likes: string[];
+  name: string;
+  profileImg: string;
+  text: string;
+  updatedAt: string;
+  user: string;
+  username: string;
+  __v: number;
+  _id: string;
+}
+
+export default function Comment({ comment, key, post} : {comment: CommentInterface, key: string, post: PostInterface}) {
   const { user } = useUser();
-  console.log(user)
 
   const deleteComment = async () => {
     if (window.confirm("Are you sure you want to delete this comment?")) {
@@ -65,7 +78,7 @@ export default function Comment({ comment, key, post} /*: {comment: CommentInter
               {moment(comment?.createdAt).fromNow()}
             </span>
           </div>
-          {comment.user === user.publicMetadata.userMongoId &&
+          {user && comment.user === user.publicMetadata.userMongoId &&
           <HiOutlineTrash className='h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 hover:text-red-500 hover:bg-red-100' 
           onClick={deleteComment}/>}
         </div>
