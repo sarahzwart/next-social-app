@@ -5,7 +5,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 function MiniProfile() {
   const { user } = useUser();
   if(!user){
-    return null;
+    console.log('no user')
   }
   return (
     <div className="text-gray-700 text-sm flex items-center cursor-pointer p-3 hover:bg-gray-100 rounded-full transition-all duration-200 justify-between xl:w-56 w-fit gap-2">
