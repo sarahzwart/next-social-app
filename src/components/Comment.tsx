@@ -1,7 +1,6 @@
 'use client';
 import moment from 'moment';
 import Link from 'next/link';
-import { HiDotsHorizontal } from 'react-icons/hi';
 import {
   HiOutlineTrash,
 } from "react-icons/hi";

@@ -2,8 +2,8 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { commentsAtom, isPopupOpenAtom, postIdAtom } from "@/atom/jotaiAtom";
-import { HiOutlineX, HiX } from "react-icons/hi";
+import { isPopupOpenAtom, postIdAtom } from "@/atom/jotaiAtom";
+import { HiX } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from 'next/navigation';
@@ -25,7 +25,7 @@ interface PostInterface {
 
 export default function CommentsPopup() {
   const [open, setOpen] = useAtom(isPopupOpenAtom);
-  const [postId, setPostId] = useAtom(postIdAtom);
+  const [postId, ] = useAtom(postIdAtom);
   const [post, setPost] = useState<PostInterface | null >(null);
   const [postLoading, setPostLoading] = useState(false);
   const [input, setInput] = useState("");

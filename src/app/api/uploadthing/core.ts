@@ -18,7 +18,7 @@ export const ourFileRouter = {
       maxFileCount: 2,
     },
   })
-    .middleware(async ({ req }) => {
+    .middleware(async () => {
       const user = await auth();
       // If you throw, the user will not be able to upload
       if (!user) throw new UploadThingError("Unauthorized");

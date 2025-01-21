@@ -9,7 +9,6 @@ import {
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import CommentsPopup from "@/components/CommentsPopup";
 import { useAtom } from "jotai";
 import { commentsAtom, isPopupOpenAtom, postIdAtom } from "@/atom/jotaiAtom";
 import { FaRegEye } from "react-icons/fa";
@@ -33,7 +32,6 @@ export default function Icons({ post }: { post: PostInterface }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(post.likes || []);
   const [, setIsPopupOpen] = useAtom(isPopupOpenAtom);
-  const [, setComments] = useAtom(commentsAtom);
   const [, setPostId] = useAtom(postIdAtom);
   const { user } = useUser();
   const router = useRouter();
@@ -42,21 +40,26 @@ export default function Icons({ post }: { post: PostInterface }) {
     if (!user) {
       return router.push("/sign-in");
     }
-    const like = fetch("/api/post/like", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ postId: post._id }),
-    });
-    if (isLiked) {
-      setLikes(
-        likes.filter((like) => like !== user.publicMetadata.userMongoId)
-      );
+    try{
+      fetch("/api/post/like", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ postId: post._id }),
+      });
+      if (isLiked) {
+        setLikes(
+          likes.filter((like) => like !== user.publicMetadata.userMongoId)
+        );
+      }
+      if (!isLiked) {
+        setLikes([...likes, String(user.publicMetadata.userMongoId)]);
+      }
+    } catch (e) {
+       console.log(e);
     }
-    if (!isLiked) {
-      setLikes([...likes, String(user.publicMetadata.userMongoId)]);
-    }
+   
   };
 
   useEffect(() => {

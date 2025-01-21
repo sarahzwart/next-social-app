@@ -13,7 +13,6 @@ export default function Input() {
   const [imageLoading, setImageLoading] = useState(false);
   const [text, setText] = useState("");
   const [postLoading, setPostLoading] = useState(false);
-  const [containsCatImage, setContainsCat] = useState(false);
 
   useEffect(() => {
     const loadTensorFlow = async () => {
@@ -39,7 +38,6 @@ export default function Input() {
         const containsCat = predictions.some((prediction) =>
           prediction.className.toLowerCase().includes("cat")
         );
-        setContainsCat(containsCat); 
         resolve(containsCat); 
         console.log("Predictions:", predictions);
       };
@@ -67,10 +65,18 @@ export default function Input() {
         image: uploadedImage,
       }),
     });
-    setPostLoading(false);
-    setText("");
-    setUploadedImage("");
-    location.reload();
+    if(response.status === 200){
+      setPostLoading(false);
+      setText("");
+      setUploadedImage("");
+      location.reload();
+    } else {
+      console.log("there was an error with upload", response.status)
+      setPostLoading(false);
+      setText("");
+      setUploadedImage("");
+      location.reload();
+    }
   };
 
   return (
