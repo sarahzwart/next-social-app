@@ -4,7 +4,6 @@ import { currentUser } from '@clerk/nextjs/server';
 
 export const DELETE = async (req) => {
   const user = await currentUser();
-  console.log(req);
   try {
     await connect();
     const data = await req.json();
@@ -14,7 +13,7 @@ export const DELETE = async (req) => {
     await Post.findByIdAndDelete(data.postId);
     return new Response('Post deleted successfully', { status: 200 });
   } catch (error) {
-    console.log('Error deleting post:', error);
+    console.error('Error deleting post:', error);
     return new Response('Error deleting post', { status: 500 });
   }
 };

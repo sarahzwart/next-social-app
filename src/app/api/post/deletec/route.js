@@ -9,7 +9,7 @@ export const DELETE = async (req) => {
     const data = await req.json();
     console.log(req.json())
     if (!user) {
-      return { status: 401, body: 'Unauthorized' };
+      return new Response( {status: 401}, 'Unauthorized' );
     }
 
     const post = await Post.findById(data.postId);
