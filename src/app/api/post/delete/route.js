@@ -11,7 +11,7 @@ export const DELETE = async (req) => {
       return new Response('Unauthorized', { status: 401 });
     }
     await Post.findByIdAndDelete(data.postId);
-    return new Response('Post deleted', { status: 200 });
+    return new Response({ status: 200 });
   } catch (error) {
     console.log('Error deleting post:', error);
     return new Response('Error deleting post', { status: 500 });
