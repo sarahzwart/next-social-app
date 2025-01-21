@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useAtom } from "jotai";
-import { commentsAtom, isPopupOpenAtom, postIdAtom } from "@/atom/jotaiAtom";
+import { isPopupOpenAtom, postIdAtom } from "@/atom/jotaiAtom";
 import { FaRegEye } from "react-icons/fa";
 
 interface PostInterface {

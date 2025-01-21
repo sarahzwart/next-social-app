@@ -32,7 +32,7 @@ interface PostInterface {
   _id: string;
 }
 
-export default function Comment({ comment, key, post} : {comment: CommentInterface, key: string, post: PostInterface}) {
+export default function Comment({ comment, post} : {comment: CommentInterface, key: string, post: PostInterface}) {
   const { user } = useUser();
 
   const deleteComment = async () => {
