@@ -72,7 +72,8 @@ export default function Icons({ post }: { post: PostInterface }) {
 
   const deletePost = async () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      if (user && user.publicMetadata.userMongoId === post.user) {
+      console.log(post)
+      if ((user && user.publicMetadata.userMongoId === post.user) || (user && user.username === 'sarahzwart')) {
         const res = await fetch("/api/post/delete", {
           method: "DELETE",
           headers: {
@@ -126,7 +127,7 @@ export default function Icons({ post }: { post: PostInterface }) {
           </span>
         )}
       </div>
-      {user && user?.publicMetadata.userMongoId === post.user && (
+      {((user && user?.publicMetadata.userMongoId === post.user) || (user && user?.username === 'sarahzwart')) && (
         <HiOutlineTrash
           onClick={deletePost}
           className="h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 hover:text-red-500 hover:bg-red-100"
