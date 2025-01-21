@@ -8,7 +8,7 @@ export const PUT = async (req) => {
     await connect();
     const data = await req.json();
     if (!user) {
-      return { status: 401, body: 'Unauthorized' };
+      return new Response({status: 401}, 'Unauthorized' );
     }
     const post = await Post.findById(data.postId);
     if (post.likes.includes(user.publicMetadata.userMongoId)) {
